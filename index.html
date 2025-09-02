@@ -33,13 +33,15 @@
           <div>
             <h1 class="weather-app-city" id="city"></h1>
             <p class="weather-app-details">
-              Tuesday 13:48, Sunny
+              <span id="time"></span>,
+              <span id="description"></span>
               <br />
-              Humidity: <strong>83%</strong>, wind: <strong>6km/h</strong>
+              Humidity: <strong id="humidity"></strong>, wind:
+              <strong id="wind-speed"></strong>
             </p>
           </div>
           <div class="weather-app-temperature-container">
-            <div class="weather-app-icon">🌞</div>
+            <div class="weather-app-icon" id="icon"></div>
             <div class="weather-app-temperature" id="temperature"></div>
             <div class="weather-app-unit">°C</div>
           </div>
