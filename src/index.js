@@ -21,8 +21,10 @@ function refreshWeather(response) {
 
 //function to format the date and time
 function formatDate(date) {
+  //get the minutes and hours from the date object
   let minutes = date.getMinutes();
   let hours = date.getHours();
+  //array of days of the week
   let days = [
     "Sunday",
     "Monday",
