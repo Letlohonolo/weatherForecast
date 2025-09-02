@@ -15,22 +15,33 @@
   <body>
     <div class="weather-app">
       <header>
-        <form>
-          <input type="search" placeholder="Enter a city..." required />
-          <input type="submit" value="Search" />
+        <form class="search-form">
+          <input
+            type="search"
+            placeholder="Enter a city..."
+            required
+            class="search-form-input"
+          />
+          <input type="submit" value="Search" class="search-form-button" />
         </form>
       </header>
 
       <main>
-        <div>
-          <h1>Durban</h1>
-          <p>
-            Tuesday 13:48, Sunny
-            <br />
-            Humidity: 83%, wind: 6km/h
-          </p>
+        <div class="weather-app-data">
+          <div>
+            <h1 class="weather-app-city">Durban</h1>
+            <p class="weather-app-details">
+              Tuesday 13:48, Sunny
+              <br />
+              Humidity: <strong>83%</strong>, wind: <strong>6km/h</strong>
+            </p>
+          </div>
+          <div class="weather-app-temperature-container">
+            <div class="weather-app-icon">🌞</div>
+            <div class="weather-app-temperature">25</div>
+            <div class="weather-app-unit">°C</div>
+          </div>
         </div>
-        <div>🌞25°C</div>
       </main>
 
       <footer>
@@ -38,14 +49,14 @@
         <a href="https://github.com/Letlohonolo" target="_blank"
           >Letlohonolo Mosia</a
         >
-        <br />
+
         Code hosted on :
         <a
           href="https://github.com/Letlohonolo/weatherForecast.git"
           target="_blank"
           >Github</a
         >
-        <br />
+
         Website hosted on :
         <a href="https://charming-pithivier-2cf534.netlify.app/" target="_blank"
           >Netlify</a
