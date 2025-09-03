@@ -65,6 +65,7 @@ function displayForecast() {
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
   let forecastHtml = "";
 
+  //loop through the days array and create the HTML for each day
   days.forEach(function (day) {
     forecastHtml =
       forecastHtml +
