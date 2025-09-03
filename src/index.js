@@ -62,6 +62,14 @@ function handleSearchSubmit(event) {
   searchCity(searchInputElement.value); //calls the function searchCity with the value entered in the search input
 }
 
+//function to format the day from the timestamp
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000); //convert the timestamp to milliseconds
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; //array of days of the week
+
+  return days[date.getDay()];
+}
+
 //function to get the forecast for the next 5 days
 function getForecast(city) {
   let apiKey = "5fob4d70t464d3dd9fbffb3b3b705a8f";
@@ -71,27 +79,30 @@ function getForecast(city) {
 
 //function to display the forecast
 function displayForecast(response) {
-  console.log(response.data);
-
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
   let forecastHtml = "";
 
-  //loop through the days array and create the HTML for each day
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  //loop through the daily forecast data
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      //only display the next 5 days
+      forecastHtml =
+        forecastHtml +
+        `
       <div class="weather-forecast-day">
-        <div class="weather-forecast-date">${day}</div>
-        <div class="weather-forecast-icon">🌤️</div>
+        <div class="weather-forecast-date">${formatDay(day.time)}</div>
+
+        <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
         <div class="weather-forecast-temperatures">
           <div class="weather-forecast-temperature">
-            <strong>15º</strong>
+            <strong>${Math.round(day.temperature.maximum)}º</strong>
           </div>
-          <div class="weather-forecast-temperature">9º</div>
+          <div class="weather-forecast-temperature">${Math.round(
+            day.temperature.minimum
+          )}º</div>
         </div>
       </div>
     `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
@@ -102,4 +113,3 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit); //when the form is submitted, it will call the function handleSearchSubmit
 
 searchCity("Ladysmith"); //default city when the page loads
-displayForecast(); //call the function to display the forecast
